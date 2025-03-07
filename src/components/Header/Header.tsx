@@ -1,27 +1,25 @@
-import  React from 'react'
-import styles from './Header.module.css'
+import styles from './Header.module.css';
+import matchTracker_logo from '../../assets/match_tracker.svg';
 import { ErrorNotification } from '../ui/ErrorNotification/ErrorNotification';
+import UpdateButton from '../ui/UpdateButton/UpdateButton';
 
 interface HeaderProps {
-    onRefresh: () => void;
-    errorMessage?: string;
+    loadMatches: () => void;
+    error: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({onRefresh, errorMessage}) => {
-    
+export const Header: React.FC<HeaderProps> = ({ loadMatches, error }) => {
     return (
-        <header className={styles.header}>
-        <div className={styles.left}>
-          <h1 className={styles.logo}>MatchTracker</h1>
-        </div>
-        <div className={styles.right}>
-          <button className={styles.refreshButton} onClick={onRefresh}>
-            Обновить
-          </button>
+        <header className={styles.container}>
+            <img src={matchTracker_logo} alt="MatchTracker" className={styles.logo} />
 
-          {errorMessage && <ErrorNotification message={errorMessage} />}
-        </div>
-      </header>
-    )
-    
-}
+            <div className={styles.updatingBlock}>
+                {error && <ErrorNotification message={error} />}
+
+                <UpdateButton className={styles.refreshButton} onClick={loadMatches}>
+                    Обновить
+                </UpdateButton>
+            </div>
+        </header>
+    );
+};

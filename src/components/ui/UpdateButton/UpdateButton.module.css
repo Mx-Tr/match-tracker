@@ -1,0 +1,24 @@
+.button {
+	display: flex;
+	align-items: center;
+	height: 3.5rem;
+	background: #EB0237;
+	padding: 0.9375rem 2.5rem;
+	border-radius: 4px;
+}
+
+.button:active {
+	background: #A01131;
+}
+
+
+
+.text {
+	font-size: 1.125rem;
+	margin-right: 0.625rem;
+}
+
+.reloadIcon {
+	height: 1.625rem;
+	width: 1.625rem;
+}

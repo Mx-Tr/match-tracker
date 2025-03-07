@@ -1,0 +1,47 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5.5rem;
+    width: 100%;
+    padding: 1rem 2.25rem;
+    text-align: center;
+    background: var(--color-primary);
+}
+
+.card:not(:last-child) {
+    margin-bottom: 0.75rem;
+}
+
+.card_edge {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    font-size: 1rem;
+}
+
+.card_center {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card_center h3 {
+    font-size: 1.25rem;
+}
+
+.teamAvatar {
+    height: 3rem;
+    width: 3rem;
+}
+
+.statusScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.68rem;
+    min-width: 5.75rem;
+    padding: 0 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}

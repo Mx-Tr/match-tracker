@@ -1,12 +1,26 @@
-import  React from 'react'
-import styles from './ErrorNotification.module.css'
+import React, { useEffect, useState } from 'react';
+import styles from './ErrorNotification.module.css';
+import errorNotificationIcon from '../../../assets/alert-triangle.svg';
 
 interface ErrorNotificationProps {
     message: string;
 }
 
-export const ErrorNotification: React.FC<ErrorNotificationProps> = ({message}) => {
+export const ErrorNotification: React.FC<ErrorNotificationProps> = ({ message }) => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        if (message) {
+            setIsVisible(true);
+        } else {
+            setIsVisible(false);
+        }
+    }, [message]);
+
     return (
-        <span className={styles.error}>{message}</span>
-    )
-}
+        <div className={`${styles.container} ${isVisible ? styles.visible : ''}`}>
+            <img src={errorNotificationIcon} alt="alert-icon" className={styles.icon} />
+            <span className={styles.message}>{message}</span>
+        </div>
+    );
+};

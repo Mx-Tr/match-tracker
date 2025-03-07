@@ -1,38 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Match } from '../../types/api-types';
-import { fetchMatches } from '../../api/fetchMatches';
+import styles from './MatchesList.module.css';
 import { MatchCard } from '../MatchCard/MatchCard';
+import { Match } from '../../types/api-types';
+import Loader from '../ui/Loader/Loader';
 
 interface MatchesListProps {
-  matchesList: Match[];
+    matches: Match[];
+    loading: boolean;
+    error: string;
 }
 
-export const MatchesList = ({ }) => {
-  const [matches, setMatches] = useState<Match[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const loadMatches = async () => {
-    try {
-      setError('');
-      setLoading(true);
-      const data = await fetchMatches();
-      setMatches(data);
-    } catch (error: any) {}
-  };
-
-  useEffect(() => {
-    loadMatches();
-  }, []);
-
-  return (
-    <div>
-      {!!matches.length &&
-        matches.map(( match ) => {
-          return (
-            <MatchCard match={match} key={match.title}/>
-          );
-        })}
-    </div>
-  );
+export const MatchesList: React.FC<MatchesListProps> = ({ matches, loading }) => {
+    return (
+        <div className={styles.list}>
+            {loading ? (
+                <Loader />
+            ) : (
+                !!matches.length &&
+                matches.map((match) => {
+                    return <MatchCard match={match} key={match.title} />;
+                })
+            )}
+        </div>
+    );
 };
