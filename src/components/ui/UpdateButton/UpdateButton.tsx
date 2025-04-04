@@ -1,5 +1,5 @@
 import styles from './UpdateButton.module.css'
-import reloadIcon from '../../../assets/Refresh.svg';
+import reloadIcon from '@assets/Refresh.svg';
 
 export default function UpdateButton({...props}) {
   return (

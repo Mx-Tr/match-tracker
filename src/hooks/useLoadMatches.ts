@@ -14,7 +14,7 @@ export default function useLoadMatches() {
             const data = await fetchMatches();
             setMatches(data);
         } catch (error: any) {
-            setError(error.message || 'Ошибка: не удалось загрузить информацию');
+            setError('Ошибка: не удалось загрузить информацию');
         } finally {
             setLoading(false);
         }

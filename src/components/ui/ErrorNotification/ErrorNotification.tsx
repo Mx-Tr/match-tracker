@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ErrorNotification.module.css';
-import errorNotificationIcon from '../../../assets/alert-triangle.svg';
+import errorNotificationIcon from '@assets/alert_triangle.svg';
 
 interface ErrorNotificationProps {
     message: string;

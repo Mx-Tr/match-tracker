@@ -104,3 +104,6 @@ export interface operations {
 
 
 export type Match = components['schemas']['Match'];
+export type MatchStatus = components['schemas']['MatchStatus'];
+export type Player = components['schemas']['Player'];
+export type Team = components['schemas']['Team'];

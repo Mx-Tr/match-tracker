@@ -7,16 +7,22 @@ interface MatchesListProps {
     matches: Match[];
     loading: boolean;
     error: string;
+    filter: string;
 }
 
-export const MatchesList: React.FC<MatchesListProps> = ({ matches, loading }) => {
+export const MatchesList: React.FC<MatchesListProps> = ({ matches, loading, filter }) => {
+
+    const filteredMatches = filter === 'All'
+    ? matches
+    : matches.filter((m) => m.status === filter);
+
+    if (loading) return <Loader/>
+    
     return (
         <div className={styles.list}>
-            {loading ? (
-                <Loader />
-            ) : (
-                !!matches.length &&
-                matches.map((match) => {
+            {(
+                !!filteredMatches.length &&
+                filteredMatches.map((match) => {
                     return <MatchCard match={match} key={match.title} />;
                 })
             )}
